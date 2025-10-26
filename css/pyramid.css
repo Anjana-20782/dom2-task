@@ -1,4 +1,4 @@
-/* --- Background --- */
+
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
@@ -7,9 +7,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* background-repeat: no-repeat; */
 }
 
 /* --- Main Wrapper (Optional) --- */
+
 .container {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
@@ -22,6 +24,7 @@ body {
 }
 
 /* --- Input Field --- */
+
 input[type="number"] {
   width: 40%;
   padding: 10px;
@@ -41,6 +44,7 @@ input::placeholder {
 }
 
 /* --- Button --- */
+
 button {
   background: linear-gradient(90deg, #43e97b, #38f9d7);
   border: none;
@@ -55,10 +59,12 @@ button {
   box-shadow: 0 5px 15px rgba(56, 249, 215, 0.3);
 }
 
+
 button:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(56, 249, 215, 0.5);
 }
+
 
 /* --- Result Box --- */
 #result {
