@@ -9,23 +9,31 @@
 <body>
 
     <div class="main">
+
+         <div class="input">
+            <input type="text" placeholder="Add task" id="task">
+            <button id="add">Add</button>
+        </div>
+
     <div class="filter">
     <button>All</button>
     <button>completed</button>
     <button>Pending</button>
     </div>
 
-    <table>
+  <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Task Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="display">
 
-        <thead>
-
-            <th>Checked</th>
-            <th>Task Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </thead>
-    </table>
-
+            </tbody>
+        </table>
     </div>
 
     <script src="./js/todocheckbox.js"></script>
