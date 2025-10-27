@@ -166,3 +166,36 @@ tr:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Edit Button */
+#edit {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+}
+
+#edit:hover {
+  background: linear-gradient(135deg, #00c6ff, #007bff);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Delete Button */
+#delete {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+#delete:hover {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
+}
+
+/* Optional: Table Row Hover */
+tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+/* Optional: Centering buttons in table cells */
+td {
+  text-align: center;
+  vertical-align: middle;
+}
