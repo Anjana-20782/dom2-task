@@ -46,5 +46,41 @@ function display() {
   document.getElementById("display").innerHTML = str;
 }
 
+// ✅ toggle completed/pending
+function toggleTask(index) {
+  Todo[index].completed = !Todo[index].completed;
+  display();
+}
 
+// ✏️ Edit task
+function editTask(index) {
+  let newTask = prompt("Edit task:", Todo[index].name);
+  if (newTask && newTask.trim() !== "") {
+    Todo[index].name = newTask.trim();
+    display();
+  }
+}
+
+// 🗑️ Delete task (without filter/map)
+function deleteTask(index) {
+  if (confirm(`Are you sure you want to delete "${Todo[index].name}"?`)) {
+    let newTodo = [];
+    for (let i = 0; i < Todo.length; i++) {
+      if (i !== index) newTodo.push(Todo[i]);
+    }
+    Todo = newTodo;
+    display();
+  }
+}
+
+// 🔘 Filter buttons
+let buttons = document.querySelectorAll(".filter button");
+
+for (let btn of buttons) {
+  btn.addEventListener("click", () => {
+    filterType = btn.textContent.toLowerCase(); // all / completed / pending
+    for (let b of buttons) b.classList.remove("active");
+    btn.classList.add("active");
+    display();
+  });
 }
