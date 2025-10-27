@@ -1,0 +1,64 @@
+/* 🧠 RESET + BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", monospace;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #1e1e2f, #252542, #3a3a62);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0e0e0;
+}
+
+/* 🌈 MAIN BOX */
+.main {
+  width: 80%;
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 255, 200, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.main:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 255, 200, 0.3);
+}
+
+/* 🧩 FILTER BUTTONS */
+.filter {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.filter button {
+  background: linear-gradient(90deg, #00ffcc, #007bff);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #0d1117;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+}
+
+.filter button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.5);
+}
+
+/* 📋 TABLE */
+
