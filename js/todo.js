@@ -25,7 +25,7 @@ function display(){
 }
 function deleteTask(index){
     let task = Todo[index];
-    if(confirm(`Are you sure "${task}" want to delete?`)){
+    if(confirm(`Are you sure "${index+1} ,${task}" want to delete?`)){
         Todo.splice(index,1);
         display()
     }
