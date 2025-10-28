@@ -50,12 +50,19 @@ function display() {
   document.getElementById("display").innerHTML = str;
 }
 
+
+
+// ✅ toggle completed/pending
+function toggleTask(index) {
+  Todo[index].completed = !Todo[index].completed;
+  display();
+}
+
 function editTask(index) {
   let taskname = document.getElementById(`taskname-${index}`);
   let editText = document.getElementById(`edittext-${index}`);
   let editButton = document.getElementById(`edit-${index}`);
   let saveButton = document.getElementById(`save-${index}`);
-
   taskname.style.display = "none";
   editText.style.display = "block";
   editText.focus();
@@ -63,32 +70,21 @@ function editTask(index) {
   saveButton.style.display = "inline-block";
 }
 
+
 function saveTask(index) {
   let editText = document.getElementById(`edittext-${index}`);
   let newText = editText.value.trim();
   if (newText !== "") {
     Todo[index].name = newText;
+    
   }
-
-  let taskname = document.getElementById(`taskname-${index}`);
-  let editButton = document.getElementById(`edit-${index}`);
-  let saveButton = document.getElementById(`save-${index}`);
-
-  taskname.innerText = newText;
-  taskname.style.display = "block";
-  editText.style.display = "none";
-  editButton.style.display = "inline-block";
-  saveButton.style.display = "none";
+  display()
 }
 
 //  Delete task (without filter/map)
 function deleteTask(index) {
   if (confirm(`Are you sure you want to delete "${Todo[index].name}"?`)) {
-    let newTodo = [];
-    for (let i = 0; i < Todo.length; i++) {
-      if (i !== index) newTodo.push(Todo[i]);
-    }
-    Todo = newTodo;
+   Todo=Todo.filter((_,i)=> i!==index)
     display();
   }
 }
