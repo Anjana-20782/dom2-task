@@ -36,9 +36,15 @@ function display() {
         <td style="text-decoration: ${
           Todo[i].completed ? "line-through" : "none"
         }; color: ${Todo[i].completed ? "#aaa" : "#fff"};">
-          ${Todo[i].name}
+          <span id="taskname">${Todo[i].name}</span>
+
+           <input type="text" id="edittext" value=${Todo[i].name} style="display:none">
         </td>
-        <td><button id="edit" onclick="editTask(${i})">Edit</button></td>
+       
+        <td>
+        <button id="edit" onclick="editTask(${i})">Edit</button>
+        <button style="display:none" id="save" onclick="saveTask(${i})">Save</button>
+        </td>
         <td><button id="delete" onclick="deleteTask(${i})">Delete</button></td>
       </tr>
     `;
@@ -46,22 +52,52 @@ function display() {
   document.getElementById("display").innerHTML = str;
 }
 
-// ✅ toggle completed/pending
+//  toggle completed/pending
 function toggleTask(index) {
   Todo[index].completed = !Todo[index].completed;
   display();
 }
 
-// ✏️ Edit task
+//  Edit task
+
 function editTask(index) {
-  let newTask = prompt("Edit task:", Todo[index].name);
-  if (newTask && newTask.trim() !== "") {
-    Todo[index].name = newTask.trim();
-    display();
-  }
+//   let newTask = prompt("Edit task:", Todo[index].name);
+//   if (newTask && newTask.trim() !== "") {
+//     Todo[index].name = newTask.trim();
+//     display();
+//   }
+
+
+let editText=document.getElementById("edittext")
+let saveButton=document.getElementById("save")
+let editButton=document.getElementById("edit")
+let taskname=document.getElementById("taskname")
+taskname.style.display="none";
+editText.style.display="block"
+editText.focus();
+editButton.style.display="none"
+saveButton.style.display="inline-block"
 }
 
-// 🗑️ Delete task (without filter/map)
+function saveTask(index)
+{
+ let editText = document.getElementById("edittext");
+  let newText = editText.value;
+if (newText !== "") {
+    Todo[index].name = newText;
+  }
+ let taskname = document.getElementById("taskname");
+  let saveButton = document.getElementById("save");
+  let editButton = document.getElementById("edit");
+
+  taskname.innerText = newText;
+  taskname.style.display = "block";
+  editText.style.display = "none";
+  editButton.style.display = "inline-block";
+  saveButton.style.display = "none";
+}
+
+//  Delete task (without filter/map)
 function deleteTask(index) {
   if (confirm(`Are you sure you want to delete "${Todo[index].name}"?`)) {
     let newTodo = [];
@@ -73,7 +109,7 @@ function deleteTask(index) {
   }
 }
 
-// 🔘 Filter buttons
+//  Filter buttons
 let buttons = document.querySelectorAll(".filter button");
 
 for (let btn of buttons) {
