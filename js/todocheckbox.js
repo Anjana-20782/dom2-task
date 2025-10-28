@@ -17,7 +17,7 @@ document.getElementById("add").addEventListener("click", () => {
 function display() {
   let str = "";
   for (let i = 0; i < Todo.length; i++) {
-    // manual filter (no filter/map)
+    // filter
     if (
       (filterType === "completed" && !Todo[i].completed) ||
       (filterType === "pending" && Todo[i].completed)
@@ -36,59 +36,43 @@ function display() {
         <td style="text-decoration: ${
           Todo[i].completed ? "line-through" : "none"
         }; color: ${Todo[i].completed ? "#aaa" : "#fff"};">
-          <span id="taskname">${Todo[i].name}</span>
-
-           <input type="text" id="edittext" value=${Todo[i].name} style="display:none">
+          <span id="taskname-${i}">${Todo[i].name}</span>
+          <input type="text" id="edittext-${i}" value="${Todo[i].name}" style="display:none">
         </td>
-       
         <td>
-        <button id="edit" onclick="editTask(${i})">Edit</button>
-        <button style="display:none" id="save" onclick="saveTask(${i})">Save</button>
+          <button id="edit-${i}" class="edite" onclick="editTask(${i})">Edit</button>
+          <button id="save-${i}" class="savey" style="display:none" onclick="saveTask(${i})">Save</button>
         </td>
-        <td><button id="delete" onclick="deleteTask(${i})">Delete</button></td>
+        <td><button id="delete-${i}" class="deletey" onclick="deleteTask(${i})">Delete</button></td>
       </tr>
     `;
   }
   document.getElementById("display").innerHTML = str;
 }
 
-//  toggle completed/pending
-function toggleTask(index) {
-  Todo[index].completed = !Todo[index].completed;
-  display();
-}
-
-//  Edit task
-
 function editTask(index) {
-//   let newTask = prompt("Edit task:", Todo[index].name);
-//   if (newTask && newTask.trim() !== "") {
-//     Todo[index].name = newTask.trim();
-//     display();
-//   }
+  let taskname = document.getElementById(`taskname-${index}`);
+  let editText = document.getElementById(`edittext-${index}`);
+  let editButton = document.getElementById(`edit-${index}`);
+  let saveButton = document.getElementById(`save-${index}`);
 
-
-let editText=document.getElementById("edittext")
-let saveButton=document.getElementById("save")
-let editButton=document.getElementById("edit")
-let taskname=document.getElementById("taskname")
-taskname.style.display="none";
-editText.style.display="block"
-editText.focus();
-editButton.style.display="none"
-saveButton.style.display="inline-block"
+  taskname.style.display = "none";
+  editText.style.display = "block";
+  editText.focus();
+  editButton.style.display = "none";
+  saveButton.style.display = "inline-block";
 }
 
-function saveTask(index)
-{
- let editText = document.getElementById("edittext");
-  let newText = editText.value;
-if (newText !== "") {
+function saveTask(index) {
+  let editText = document.getElementById(`edittext-${index}`);
+  let newText = editText.value.trim();
+  if (newText !== "") {
     Todo[index].name = newText;
   }
- let taskname = document.getElementById("taskname");
-  let saveButton = document.getElementById("save");
-  let editButton = document.getElementById("edit");
+
+  let taskname = document.getElementById(`taskname-${index}`);
+  let editButton = document.getElementById(`edit-${index}`);
+  let saveButton = document.getElementById(`save-${index}`);
 
   taskname.innerText = newText;
   taskname.style.display = "block";

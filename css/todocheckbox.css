@@ -153,7 +153,7 @@ tr:hover {
 
 /* === Edit & Delete Buttons === */
 
-#edit, #delete , #save {
+.edite, .deletey , .savey {
   border: none;
   outline: none;
   padding: 8px 18px;
@@ -167,11 +167,11 @@ tr:hover {
 }
 
 /* Edit Button */
-#edit , #save {
+.edite , .savey {
   background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 
-#edit:hover , #save:hover {
+.edite:hover , .savey:hover {
   background: linear-gradient(135deg, #00c6ff, #007bff);
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
@@ -179,11 +179,11 @@ tr:hover {
 }
 
 /* Delete Button */
-#delete {
+.deletey {
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
 }
 
-#delete:hover {
+.deletey:hover {
   background: linear-gradient(135deg, #ff4b2b, #ff416c);
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
